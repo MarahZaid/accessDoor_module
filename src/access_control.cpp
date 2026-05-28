@@ -31,9 +31,16 @@ void openLock(String line1, String line2) {
   lcd.clear();
   printCentered(1, line1);
   printCentered(2, line2);
+  
   digitalWrite(RELAY_PIN, HIGH);
   delay(5000);
   digitalWrite(RELAY_PIN, LOW);
+  
+  // هون بتصير الخربشة ↑ بعد هاد السطر مباشرة
+  delay(300);      // انتظر تهدأ الضوضاء
+  lcd.init();      // أعد تهيئة LCD
+  lcd.backlight();
+  
   showHome();
 }
 
